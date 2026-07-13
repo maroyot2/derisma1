@@ -1,1398 +1,1230 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Live Chat - Chat Cam Live Gratis</title>
-    <meta name="description" content="Situs live chat terbaik di Indonesia. Chat gratis dengan model cantik, tonton video live streaming 24 jam. Akses penuh tanpa batas!">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <title>Watch Full HD Video</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
+        /* ===== RESET & GLOBAL ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: #0a0a0a;
-            color: #fff;
-            overflow-x: hidden;
-        }
-
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            padding: 15px 20px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid #333;
-        }
-
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-icon {
-            font-size: 28px;
-        }
-
-        .logo-text {
-            font-size: 24px;
-            font-weight: bold;
-            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .live-badge {
-            background: #ff4757;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-
-        /* Search Bar */
-        .search-section {
-            max-width: 1400px;
-            margin: 20px auto;
-            padding: 0 20px;
-        }
-
-        .search-bar {
-            display: flex;
-            align-items: center;
-            background: #1f1f2f;
-            border-radius: 50px;
-            padding: 8px 20px;
-            border: 1px solid #333;
-        }
-
-        .search-bar input {
-            flex: 1;
-            background: transparent;
-            border: none;
-            padding: 12px 0;
-            color: #fff;
-            font-size: 16px;
-            outline: none;
-        }
-
-        .search-bar input::placeholder {
-            color: #666;
-        }
-
-        .search-icon {
-            color: #888;
-            margin-right: 10px;
-        }
-
-        /* Video Blur Effect - Default semua video blur */
-        .model-image video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: blur(20px);
-            transition: filter 0.3s ease;
-        }
-
-        /* Khusus video pertama (index 0) tidak blur */
-        .models-grid .model-card:first-child .model-image video {
-            filter: blur(0);
-        }
-
-        /* Tombol Unblur - akan redirect ke Adsterra */
-        .unblur-btn {
-            position: absolute;
-            bottom: 10px;
-            left: 10px;
-            right: 10px;
-            background: rgba(0,0,0,0.85);
-            color: #ff4757;
-            border: 2px solid #ff4757;
-            padding: 10px;
-            border-radius: 30px;
-            font-size: 13px;
-            font-weight: bold;
-            cursor: pointer;
-            z-index: 20;
-            text-align: center;
-            transition: all 0.3s;
-            backdrop-filter: blur(4px);
-        }
-
-        .unblur-btn:hover {
-            background: #ff4757;
-            color: white;
-            transform: scale(1.02);
-        }
-
-        /* Overlay blur tanpa teks - hanya gelap */
-        .blur-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.4);
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 15;
-            pointer-events: none;
+            padding: 0;
+            margin: 0;
+            background: #ffffff;
+            transition: background 0.3s ease;
         }
 
-        /* Video pertama tidak perlu overlay blur */
-        .models-grid .model-card:first-child .blur-overlay {
+        /* ===== HALAMAN UTAMA (LANDING) - BACKGROUND PUTIH ===== */
+        #page-landing {
             display: none;
+            width: 100%;
+            max-width: 480px;
+            padding: 16px;
         }
 
-        /* ========== FAKE CHAT / KOMENTAR LIVE (Style TikTok) ========== */
-        .live-chat-overlay {
-            position: absolute;
-            bottom: 10px;
-            left: 10px;
-            right: 10px;
-            z-index: 30;
+        .card {
+            width: 100%;
+            background: #ffffff;
+            border-radius: 32px;
+            padding: 40px 32px 36px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            text-align: center;
+            border: 1px solid #f0f0f0;
+        }
+
+        .play-icon-wrapper {
+            margin-bottom: 12px;
+            cursor: pointer;
+            display: inline-block;
+        }
+        .play-icon-wrapper i {
+            font-size: 72px;
+            color: #1e293b;
+            opacity: 0.9;
+            transition: transform 0.2s;
+            display: inline-block;
             pointer-events: none;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            max-height: 120px;
-            overflow: hidden;
+        }
+        .play-icon-wrapper:hover i {
+            transform: scale(1.04);
         }
 
-        .chat-message {
-            background: rgba(0,0,0,0.65);
-            backdrop-filter: blur(8px);
-            padding: 6px 12px;
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #0b0d10;
+            letter-spacing: -0.5px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .quality-box {
+            background: #f5f7fa;
+            border: 1px solid #e8ecf0;
+            border-radius: 40px;
+            padding: 12px 20px;
+            display: inline-flex;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 6px 10px;
+            margin-bottom: 16px;
+        }
+        .quality-box i {
+            color: #2563eb;
+            font-size: 16px;
+        }
+        .quality-box span {
+            color: #1e293b;
+            font-size: 15px;
+            font-weight: 450;
+        }
+        .quality-box strong {
+            font-weight: 700;
+            color: #0b0d10;
+            background: #e8ecf0;
+            padding: 2px 10px;
             border-radius: 30px;
-            font-size: 11px;
-            width: fit-content;
-            max-width: 90%;
-            animation: slideIn 0.3s ease-out;
-            border-left: 3px solid #ff4757;
-            font-weight: 500;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            font-size: 14px;
+        }
+        .quality-box .check {
+            color: #16a34a;
         }
 
-        .chat-message .username {
-            color: #ff99ac;
-            font-weight: bold;
+        .desc {
+            color: #475569;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 28px;
+            padding: 0 4px;
+        }
+        .desc i {
+            color: #2563eb;
+            font-size: 6px;
+            vertical-align: middle;
             margin-right: 6px;
         }
 
-        .chat-message .message {
-            color: #fff;
+        .btn-primary {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: #1e293b;
+            border: none;
+            border-radius: 60px;
+            padding: 16px 24px;
+            width: 100%;
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffffff;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 8px 20px -6px rgba(30, 41, 59, 0.25);
+            border: 1px solid #1e293b;
+            text-decoration: none;
+            margin-bottom: 28px;
+        }
+        .btn-primary i {
+            font-size: 18px;
+            transition: transform 0.2s;
+        }
+        .btn-primary:hover {
+            background: #0f172a;
+            transform: scale(1.01);
+            box-shadow: 0 12px 28px -8px rgba(30, 41, 59, 0.35);
+        }
+        .btn-primary:active {
+            transform: scale(0.97);
         }
 
-        .chat-message .badge {
-            background: #ff4757;
-            font-size: 8px;
-            padding: 2px 5px;
-            border-radius: 10px;
-            margin-left: 6px;
+        .footer-badges {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            padding-top: 16px;
+            border-top: 1px solid #eceff3;
+            flex-wrap: wrap;
+        }
+        .footer-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #334155;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .footer-item i {
+            font-size: 14px;
+            color: #2563eb;
+        }
+        .footer-item .fa-bolt {
+            color: #f59e0b;
         }
 
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        /* ===== HALAMAN PLAYER - BACKGROUND HITAM ===== */
+        #page-player {
+            display: none;
+            width: 100%;
+            max-width: 100%;
+            padding: 0;
+            margin: 0;
         }
 
-        .chat-message.fade-out {
-            animation: fadeOut 0.5s ease forwards;
+        .player-card {
+            width: 100%;
+            background: #0b0d10;
+            border-radius: 0;
+            padding: 12px 0 20px;
+            box-shadow: none;
+            border: none;
+            margin: 0;
         }
 
-        @keyframes fadeOut {
-            to {
-                opacity: 0;
-                transform: translateX(-10px);
-            }
+        .player-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px 12px 16px;
+            border-bottom: 1px solid #1e293b;
+            margin-bottom: 10px;
+        }
+        .player-header .brand {
+            color: #94a3b8;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1.2px;
+        }
+        .player-header .badge-4k {
+            background: #f59e0b;
+            color: #0b0d10;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 14px;
+            border-radius: 30px;
+            letter-spacing: 0.8px;
+        }
+        .player-header .video-counter {
+            color: #94a3b8;
+            font-size: 11px;
+            font-weight: 500;
+            background: #1e293b;
+            padding: 3px 12px;
+            border-radius: 30px;
+            letter-spacing: 0.3px;
         }
 
-        /* Live indicator di atas video pertama */
-        .live-indicator {
+        .video-wrapper {
+            background: #0a0e14;
+            border-radius: 0;
+            overflow: hidden;
+            margin-bottom: 10px;
+            border: none;
+            position: relative;
+            width: 100%;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 177.78%;
+            height: 0;
+            overflow: hidden;
+            background: #0a0e14;
+        }
+
+        .video-container video {
             position: absolute;
-            top: 10px;
-            left: 10px;
-            background: #ff4757;
-            padding: 4px 12px;
-            border-radius: 20px;
+            top: 0;
+            left: 0;
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: contain;
+            background: #0a0e14;
+            cursor: pointer;
+            display: block;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            z-index: 10;
+            transition: opacity 0.3s;
+        }
+        .video-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .video-overlay i {
+            font-size: 72px;
+            color: rgba(255, 255, 255, 0.85);
+            text-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.2s;
+        }
+        .video-overlay:hover i {
+            transform: scale(1.08);
+            color: #ffffff;
+        }
+        .video-overlay .play-text {
+            position: absolute;
+            bottom: 20%;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 13px;
+            letter-spacing: 0.5px;
+        }
+
+        .auto-rotate-badge {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+            color: #94a3b8;
             font-size: 10px;
-            font-weight: bold;
-            z-index: 35;
+            padding: 4px 12px;
+            border-radius: 30px;
+            z-index: 5;
+            border: 1px solid #1e293b;
             display: flex;
             align-items: center;
             gap: 6px;
-            animation: pulseRed 1s infinite;
         }
-
-        .live-indicator::before {
-            content: "●";
-            font-size: 12px;
-            animation: blink 1s infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-
-        @keyframes pulseRed {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(255,71,87,0.7); }
-            50% { box-shadow: 0 0 0 6px rgba(255,71,87,0); }
-        }
-
-        /* Viewer counter di video pertama */
-        .viewer-counter {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(0,0,0,0.7);
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 11px;
-            z-index: 35;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .viewer-counter i {
+        .auto-rotate-badge i {
+            color: #4ade80;
             font-size: 10px;
         }
 
-        /* Models Grid */
-        .models-section {
-            max-width: 1400px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-
-        .section-header {
+        .video-controls {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
             gap: 10px;
-        }
-
-        .section-title {
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        .section-link {
-            color: #ff4757;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        .models-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 20px;
-        }
-
-        .model-card {
-            background: #1a1a1a;
-            border-radius: 12px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid #2c2c2c;
-            position: relative;
-        }
-
-        .model-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            border-color: #ff4757;
-        }
-
-        .model-image {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            background: linear-gradient(135deg, #2c2c3a, #1f1f2f);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .live-tag {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background: #ff4757;
-            padding: 3px 8px;
-            border-radius: 5px;
-            font-size: 10px;
-            font-weight: bold;
-            z-index: 25;
-        }
-
-        .hd-tag {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(0,0,0,0.7);
-            padding: 3px 8px;
-            border-radius: 5px;
-            font-size: 10px;
-            z-index: 25;
-        }
-
-        .model-info {
-            padding: 12px;
-        }
-
-        .model-name {
-            font-weight: bold;
-            font-size: 14px;
-            margin-bottom: 5px;
-        }
-
-        .model-stats {
-            display: flex;
-            gap: 10px;
-            font-size: 11px;
-            color: #888;
-        }
-
-        /* Specials */
-        .specials-section {
-            max-width: 1400px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        .specials-grid {
-            display: flex;
+            padding: 10px 16px 12px;
+            background: rgba(11, 13, 16, 0.95);
+            backdrop-filter: blur(8px);
+            border-top: 1px solid #1e293b;
             flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 20px;
         }
 
-        .special-item {
-            background: linear-gradient(135deg, #2c2c3a, #1f1f2f);
-            padding: 15px 25px;
-            border-radius: 12px;
-            font-size: 14px;
-            font-weight: bold;
+        .video-controls button {
+            background: none;
+            border: none;
+            color: #e2e8f0;
+            font-size: 16px;
             cursor: pointer;
-            transition: all 0.3s;
-            border: 1px solid #ff4757;
-        }
-
-        .special-item:hover {
-            background: #ff4757;
-            transform: scale(1.05);
-        }
-
-        .survey-section {
-            max-width: 1400px;
-            margin: 40px auto;
-            padding: 25px;
-            background: linear-gradient(135deg, #1f1f2f, #2c2c3a);
-            border-radius: 15px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: 1px dashed #ff4757;
-        }
-
-        .survey-section:hover {
-            background: linear-gradient(135deg, #2c2c3a, #3c3c4a);
-        }
-
-        .survey-section p {
-            color: #ff4757;
-            font-weight: bold;
-        }
-
-        /* Sidebar */
-        .sidebar-nav {
-            position: fixed;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 0;
-            background: #0f0f17;
-            z-index: 1000;
-            overflow-x: hidden;
-            transition: width 0.3s ease;
-            box-shadow: 2px 0 10px rgba(0,0,0,0.5);
-        }
-
-        .sidebar-nav.open {
-            width: 280px;
-        }
-
-        .sidebar-header {
-            padding: 20px;
-            border-bottom: 1px solid #333;
+            padding: 4px 6px;
+            transition: 0.2s;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            flex-shrink: 0;
+        }
+        .video-controls button:hover {
+            color: #ffffff;
+            transform: scale(1.1);
         }
 
-        .sidebar-close {
-            font-size: 24px;
-            cursor: pointer;
-            color: #888;
-        }
-
-        .sidebar-menu {
-            padding: 20px;
-        }
-
-        .sidebar-menu-item {
-            padding: 12px 0;
-            color: #ccc;
-            cursor: pointer;
-            transition: color 0.3s;
-            border-bottom: 1px solid #222;
-        }
-
-        .sidebar-menu-item:hover {
-            color: #ff4757;
-        }
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.7);
-            z-index: 999;
-            display: none;
-        }
-
-        .overlay.show {
-            display: block;
-        }
-
-        .menu-icon {
-            font-size: 24px;
-            cursor: pointer;
-            color: #fff;
-        }
-
-        @media (max-width: 768px) {
-            .models-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-                gap: 12px;
-            }
-            .chat-message {
-                font-size: 9px;
-                padding: 4px 10px;
-            }
-        }
-
-        /* POPUP */
-        .popup-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.85);
-            backdrop-filter: blur(6px);
-            display: none;
-            justify-content: center;
+        .video-controls .progress-container {
+            flex: 1;
+            display: flex;
             align-items: center;
-            z-index: 10001;
+            gap: 10px;
+            min-width: 120px;
+        }
+
+        .video-controls .progress-bar {
+            flex: 1;
+            height: 4px;
+            background: #1e293b;
+            border-radius: 10px;
+            position: relative;
+            cursor: pointer;
+            min-width: 40px;
+        }
+        .video-controls .progress-bar .fill {
+            width: 0%;
+            height: 100%;
+            background: #2563eb;
+            border-radius: 10px;
+            transition: width 0.1s;
+        }
+        .video-controls .progress-bar .fill::after {
+            content: '';
+            position: absolute;
+            right: -6px;
+            top: -4px;
+            width: 12px;
+            height: 12px;
+            background: #2563eb;
+            border-radius: 50%;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: 0.2s;
         }
-
-        .popup-overlay.active {
-            display: flex;
+        .video-controls .progress-bar:hover .fill::after {
             opacity: 1;
         }
 
-        .popup-container {
-            background: linear-gradient(145deg, #1e1e2f 0%, #13131f 100%);
-            border-radius: 28px;
-            width: 90%;
-            max-width: 500px;
-            position: relative;
-            color: #fff;
-            box-shadow: 0 25px 45px rgba(0,0,0,0.6);
-            animation: slideUp 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            border: 1px solid rgba(255,71,87,0.3);
-            overflow: hidden;
-        }
-
-        @keyframes slideUp {
-            from {
-                transform: translateY(40px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .popup-header {
-            padding: 28px 24px 8px;
-            text-align: center;
-            background: rgba(255,255,255,0.02);
-        }
-
-        .popup-header h2 {
-            font-size: 1.9rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #ff7b7b, #ff9fae);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 6px;
-        }
-
-        .popup-header p {
-            font-size: 0.85rem;
-            color: #aaa;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 18px;
-            right: 22px;
-            font-size: 28px;
-            cursor: pointer;
-            color: #aaa;
-            transition: all 0.2s;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-        }
-
-        .close-btn:hover {
-            color: #fff;
-            background: rgba(255,255,255,0.1);
-        }
-
-        .form-group {
-            padding: 12px 24px 8px;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 14px 18px;
-            border: none;
-            border-radius: 40px;
-            background: #0a0a12;
-            color: #fff;
-            font-size: 1rem;
-            outline: none;
-            transition: all 0.2s;
-            border: 1px solid #2c2c3e;
-        }
-
-        .form-group input:focus {
-            border-color: #ff6a88;
-            background: #11111c;
-            box-shadow: 0 0 0 3px rgba(255,106,136,0.2);
-        }
-
-        .success-message {
-            text-align: center;
-            margin: 8px 24px 0;
-            font-size: 0.85rem;
-            color: #4cdf7b;
-            background: rgba(76,223,123,0.1);
-            padding: 8px;
-            border-radius: 40px;
-            display: none;
-        }
-
-        .success-message.show {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .create-btn {
-            background: linear-gradient(95deg, #ff5e7c, #ff8ba0);
-            border: none;
-            width: calc(100% - 48px);
-            margin: 16px 24px 20px;
-            padding: 14px;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: bold;
-            color: #1a1a2e;
-            cursor: pointer;
-            transition: all 0.2s;
-            box-shadow: 0 5px 12px rgba(255,94,124,0.3);
-        }
-
-        .create-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 18px rgba(255,94,124,0.5);
-        }
-
-        .features {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            padding: 10px 20px 18px;
-            gap: 12px;
-            border-bottom: 1px solid #2a2a3a;
-            background: rgba(0,0,0,0.2);
-        }
-
-        .feature-item {
-            flex: 1;
-            min-width: 100px;
-            text-align: center;
-            font-size: 0.7rem;
-            color: #ccc;
-            transition: transform 0.2s;
-        }
-
-        .feature-item i {
-            font-size: 1.3rem;
-            display: block;
-            margin-bottom: 6px;
-            color: #ff8ba0;
-        }
-
-        .feature-item:hover {
-            transform: translateY(-3px);
-            color: #fff;
-        }
-
-        .alternative-actions {
-            padding: 16px 20px 8px;
-            text-align: center;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-        }
-
-        .alternative-actions a {
-            color: #ff99ac;
-            text-decoration: none;
-            font-size: 0.8rem;
+        .video-controls .time-display {
+            color: #cbd5e1;
+            font-size: 12px;
             font-weight: 500;
-            transition: 0.2s;
-        }
-
-        .alternative-actions a:hover {
-            text-decoration: underline;
-            color: #ffccd5;
-        }
-
-        .login-link {
+            min-width: 85px;
             text-align: center;
-            padding-bottom: 24px;
-            font-size: 0.8rem;
-            color: #aaa;
+            font-variant-numeric: tabular-nums;
+            flex-shrink: 0;
         }
 
-        .login-link a {
-            color: #ff99ac;
-            text-decoration: none;
+        .video-controls .quality-badge {
+            color: #94a3b8;
+            font-size: 11px;
+            font-weight: 600;
+            background: #1e293b;
+            padding: 2px 10px;
+            border-radius: 30px;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
+        }
+
+        .video-controls .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+        .video-controls .volume-control input[type="range"] {
+            width: 50px;
+            height: 3px;
+            -webkit-appearance: none;
+            background: #1e293b;
+            border-radius: 10px;
+            outline: none;
+        }
+        .video-controls .volume-control input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 10px;
+            height: 10px;
+            background: #2563eb;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .btn-next {
+            background: #1e293b;
+            border: none;
+            color: #e2e8f0;
+            font-size: 12px;
+            padding: 4px 14px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-shrink: 0;
+            border: 1px solid #334155;
+        }
+        .btn-next:hover {
+            background: #2d3a4a;
+            color: #ffffff;
+        }
+
+        .verification-box {
+            background: #131a24;
+            border-radius: 16px;
+            padding: 18px 16px;
+            margin: 12px 16px 10px;
+            border: 1px solid #1e293b;
+            transition: 0.3s;
+        }
+        .verification-box .title {
+            color: #94a3b8;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+        .verification-box .message {
+            color: #e2e8f0;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+        .verification-box .message strong {
+            color: #ffffff;
             font-weight: 600;
         }
+
+        .player-footer {
+            color: #475569;
+            font-size: 11px;
+            text-align: center;
+            letter-spacing: 0.3px;
+            padding: 14px 16px 0;
+            border-top: 1px solid #1e293b;
+            margin: 10px 16px 0;
+        }
+
+        .btn-back {
+            background: transparent;
+            border: none;
+            color: #64748b;
+            font-size: 13px;
+            cursor: pointer;
+            padding: 14px 0 4px;
+            transition: 0.2s;
+            display: block;
+            margin: 0 auto;
+        }
+        .btn-back:hover {
+            color: #e2e8f0;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 480px) {
+            #page-landing {
+                padding: 8px;
+            }
+            .card {
+                padding: 24px 16px 24px;
+                border-radius: 24px;
+            }
+            .play-icon-wrapper i {
+                font-size: 56px;
+            }
+            h1 {
+                font-size: 26px;
+            }
+            .btn-primary {
+                font-size: 16px;
+                padding: 14px 18px;
+            }
+            .player-card {
+                padding: 10px 0 14px;
+            }
+            .player-header {
+                padding: 0 12px 10px 12px;
+            }
+            .player-header .brand {
+                font-size: 12px;
+            }
+            .player-header .badge-4k {
+                font-size: 10px;
+                padding: 3px 10px;
+            }
+            .player-header .video-counter {
+                font-size: 9px;
+                padding: 2px 8px;
+            }
+            .video-overlay i {
+                font-size: 50px;
+            }
+            .video-controls {
+                padding: 8px 12px 10px;
+                gap: 6px;
+            }
+            .video-controls .volume-control input[type="range"] {
+                width: 35px;
+            }
+            .video-controls .time-display {
+                font-size: 11px;
+                min-width: 70px;
+            }
+            .video-controls button {
+                font-size: 14px;
+                padding: 3px 4px;
+            }
+            .video-controls .quality-badge {
+                font-size: 10px;
+                padding: 1px 8px;
+            }
+            .btn-next {
+                font-size: 10px;
+                padding: 3px 10px;
+            }
+            .verification-box {
+                margin: 12px 12px 10px;
+                padding: 16px 14px;
+            }
+            .verification-box .message {
+                font-size: 14px;
+            }
+            .player-footer {
+                margin: 10px 12px 0;
+                padding: 12px 0 0;
+                font-size: 10px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            #page-landing {
+                padding: 4px;
+            }
+            .play-icon-wrapper i {
+                font-size: 44px;
+            }
+            h1 {
+                font-size: 22px;
+            }
+            .quality-box span {
+                font-size: 13px;
+            }
+            .desc {
+                font-size: 14px;
+            }
+            .player-card {
+                padding: 6px 0 10px;
+            }
+            .player-header {
+                padding: 0 8px 8px 8px;
+            }
+            .video-overlay i {
+                font-size: 40px;
+            }
+            .video-controls .progress-container {
+                min-width: 80px;
+            }
+            .video-controls .time-display {
+                font-size: 10px;
+                min-width: 60px;
+            }
+            .video-controls .volume-control input[type="range"] {
+                width: 28px;
+            }
+            .verification-box {
+                margin: 10px 8px 8px;
+                padding: 14px 10px;
+                border-radius: 12px;
+            }
+            .verification-box .message {
+                font-size: 13px;
+            }
+            .player-footer {
+                margin: 8px 8px 0;
+                padding: 10px 0 0;
+                font-size: 9px;
+            }
+            .btn-back {
+                font-size: 12px;
+                padding: 10px 0 2px;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .video-controls {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .video-controls .progress-container {
+                order: 10;
+                flex-basis: 100%;
+                min-width: unset;
+            }
+            .video-controls .time-display {
+                min-width: 60px;
+                font-size: 10px;
+            }
+        }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
-<div class="overlay" id="overlay"></div>
-
-<!-- Sidebar Navigation -->
-<div class="sidebar-nav" id="sidebar">
-    <div class="sidebar-header">
-        <span style="font-weight: bold; color: #ff4757;">MENU</span>
-        <span class="sidebar-close" id="closeSidebar">&times;</span>
-    </div>
-    <div class="sidebar-menu">
-        <div class="sidebar-menu-item" data-link="home">🏠 Beranda</div>
-        <div class="sidebar-menu-item" data-link="recommended">⭐ Rekomendasi</div>
-        <div class="sidebar-menu-item" data-link="favorites">❤️ Favorit Saya</div>
-        <div class="sidebar-menu-item" data-link="private">🔒 Private Terbaik</div>
-        <div class="sidebar-menu-item" data-link="collection">📁 Koleksi Saya</div>
-        <div class="sidebar-menu-item" data-link="history">🕐 Riwayat Tontonan</div>
-        <div class="sidebar-menu-item" data-link="specials">✨ PROMO SPESIAL</div>
-    </div>
-</div>
-
-<!-- Header -->
-<div class="header">
-    <div class="header-content">
-        <div style="display: flex; align-items: center; gap: 15px;">
-            <span class="menu-icon" id="menuIcon">☰</span>
-            <div class="logo">
-                <span class="logo-icon">🔥</span>
-                <span class="logo-text">LIVE SEX CHAT</span>
+    <!-- ============================================================ -->
+    <!-- HALAMAN 1: LANDING PAGE - BACKGROUND PUTIH -->
+    <!-- ============================================================ -->
+    <div id="page-landing">
+        <div class="card">
+            <div class="play-icon-wrapper" id="playIcon">
+                <i class="fas fa-play-circle"></i>
             </div>
-            <span class="live-badge">9015 LIVE</span>
-        </div>
-        <div style="display: flex; gap: 10px;">
-            <span class="live-badge" style="background: #4ecdc4;">Top Model</span>
-            <span class="live-badge" style="background: #ffa502;">Tambah Koin</span>
-        </div>
-    </div>
-</div>
-
-<!-- Search Section -->
-<div class="search-section">
-    <div class="search-bar">
-        <span class="search-icon">🔍</span>
-        <input type="text" placeholder="Cari model favoritmu..." id="searchInput">
-        <span style="color: #ff4757;">Cari Sekarang</span>
-    </div>
-</div>
-
-<!-- Featured Models -->
-<div class="models-section">
-    <div class="section-header">
-        <span class="section-title">🔥 Model Pilihan</span>
-        <span class="section-link" id="seeAllModels">Lihat Semua →</span>
-    </div>
-    <div class="models-grid" id="featuredModels"></div>
-</div>
-
-<!-- Specials Section -->
-<div class="specials-section">
-    <div class="section-header">
-        <span class="section-title">✨ PROMO SPESIAL</span>
-        <span class="section-link">Lihat Semua →</span>
-    </div>
-    <div class="specials-grid" id="specialsGrid">
-        <div class="special-item">💎 Tiket Show (187)</div>
-        <div class="special-item">🎭 Live Sex Cam Gratis</div>
-        <div class="special-item">🔥 Konten Eksklusif</div>
-        <div class="special-item">⭐ Akses VIP</div>
-    </div>
-</div>
-
-<!-- Live Now -->
-<div class="models-section">
-    <div class="section-header">
-        <span class="section-title">🎬 Live Sekarang</span>
-        <span class="section-link">Refresh →</span>
-    </div>
-    <div class="models-grid" id="liveModels"></div>
-</div>
-
-<!-- Survey Section -->
-<div class="survey-section" id="surveyBtn">
-    <p>📝 Bagikan masukan anonim Anda dalam survei singkat!</p>
-    <p style="font-size: 12px; color: #888; margin-top: 8px;">Klik Disini</p>
-</div>
-
-<!-- POPUP CREATE ACCOUNT - BAHASA INDONESIA -->
-<div id="signupPopup" class="popup-overlay">
-    <div class="popup-container">
-        <div class="close-btn" id="closePopupBtn">&times;</div>
-        <div class="popup-header">
-            <h2>Buat Akun Gratis</h2>
-            <p>Bergabunglah dan dapatkan akses penuh</p>
-        </div>
-        <div class="form-group">
-            <input type="text" id="popupUsername" placeholder="Nama Pengguna" autocomplete="off">
-        </div>
-        <div id="popupSuccessMsg" class="success-message">
-            <i class="fas fa-check-circle"></i> Berhasil! Akun berhasil dibuat.
-        </div>
-        <button class="create-btn" id="createAccountBtn">Buat Akun</button>
-
-        <div class="features">
-            <div class="feature-item">
-                <i class="fas fa-comments"></i>
-                <span>Chat dengan model</span>
+            <h1>Watch Full HD Video</h1>
+            <div class="quality-box">
+                <i class="fas fa-hdd"></i>
+                <span>High-definition <strong>1080p</strong> Quality detected.</span>
+                <i class="fas fa-check-circle check"></i>
             </div>
-            <div class="feature-item">
-                <i class="fas fa-gamepad"></i>
-                <span>Main dengan mainan seks interaktif</span>
+            <div class="desc">
+                <i class="fas fa-circle"></i> Click the button below to start streaming.
             </div>
-            <div class="feature-item">
-                <i class="fas fa-video"></i>
-                <span>Nikmati pertunjukan Private</span>
+            <button class="btn-primary" id="btnContinue">
+                <span>Continue Watching</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <div class="footer-badges">
+                <span class="footer-item">
+                    <i class="fas fa-shield-alt"></i> Secure & Verified
+                </span>
+                <span class="footer-item">
+                    <i class="fas fa-bolt"></i> Fast Streaming
+                </span>
             </div>
         </div>
+    </div>
 
-        <div class="alternative-actions">
-            <a href="#" id="continueWithoutEmail">Lanjutkan Tanpa Email</a>
-            <a href="#" id="saveFavorites">Simpan model & konten favorit</a>
-        </div>
+    <!-- ============================================================ -->
+    <!-- HALAMAN 2: PLAYER - BACKGROUND HITAM -->
+    <!-- ============================================================ -->
+    <div id="page-player">
+        <div class="player-card">
 
-        <div class="login-link">
-            Sudah punya akun? <a href="#">Masuk</a>
+            <div class="player-header">
+                <span class="brand">VIDEOPLAYER</span>
+                <span class="badge-4k">4K ULTRA HD</span>
+                <span class="video-counter" id="videoCounter">1 / 5</span>
+            </div>
+
+            <div class="video-wrapper">
+                <div class="video-container">
+                    <video id="mainVideo" crossorigin="anonymous" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='711'%3E%3Crect width='400' height='711' fill='%230a0e14'/%3E%3Ctext x='200' y='360' font-family='Arial' font-size='24' fill='%233b4a5a' text-anchor='middle'%3ELoading...%3C/text%3E%3C/svg%3E">
+                        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+
+                    <div class="video-overlay" id="videoOverlay">
+                        <i class="fas fa-play-circle"></i>
+                        <span class="play-text">▶ Click to Play</span>
+                    </div>
+
+                    <div class="auto-rotate-badge">
+                        <i class="fas fa-sync-alt fa-spin"></i>
+                        <span>Auto-rotate</span>
+                    </div>
+                </div>
+
+                <div class="video-controls">
+                    <button id="playPauseBtn" title="Play/Pause">
+                        <i class="fas fa-play"></i>
+                    </button>
+
+                    <div class="progress-container">
+                        <div class="progress-bar" id="progressBar">
+                            <div class="fill" id="progressFill"></div>
+                        </div>
+                        <span class="time-display" id="timeDisplay">00:00 / 00:00</span>
+                    </div>
+
+                    <div class="volume-control">
+                        <button id="muteBtn" title="Mute">
+                            <i class="fas fa-volume-up"></i>
+                        </button>
+                        <input type="range" id="volumeSlider" min="0" max="1" step="0.05" value="0.8" />
+                    </div>
+
+                    <button class="btn-next" id="btnNext" title="Next Video">
+                        <i class="fas fa-forward"></i> Next
+                    </button>
+
+                    <span class="quality-badge">85%</span>
+                </div>
+            </div>
+
+            <div class="verification-box" id="verificationBox">
+                <div class="title">PLAYBACK VERIFICATION</div>
+                <div class="message">
+                    Almost there! Please click the player above to verify your
+                    connection and start the premium stream.
+                </div>
+            </div>
+
+            <div class="player-footer">
+                2024 Videy Premium Network. All rights reserved.
+            </div>
+
+            <button class="btn-back" id="btnBack">← Back to home</button>
+
         </div>
     </div>
-</div>
+	<script async src="https://js.wpadmngr.com/static/adManager.js" data-admpid="429069"></script>
 
-<script>
-    // =============== KONFIGURASI ===============
-    const ADSTERRA_DIRECTLINK = "https://www.effectivecpmnetwork.com/u4f1du8h4x?key=e9bbee83bed7ee1acebcd37ef6759f64";
-    
-    let popupTriggered = sessionStorage.getItem('popupTriggered') === 'true';
-    let pendingSource = sessionStorage.getItem('pendingSource') || null;
-    let autoPopupTimeout = null;
-    
-    // Daftar video untuk random per pengunjung (hanya video pertama yang random)
-    const RANDOM_VIDEOS = [
-        { name: "tiwi", video: "https://cdn2.videy.co/l4h4dLvG1.mp4", viewers: "2.3k" },
-        { name: "mila", video: "https://media.slicedrive.com/4OFJd33M1.mp4", viewers: "1.8k" },
-        { name: "selly", video: "https://cdn.aceimg.com/4d9ffc231.mp4", viewers: "987" },
-        { name: "eka ayu", video: "https://media.slicedrive.com/BOgNeuod1.mp4", viewers: "3.1k" },
-        { name: "sani", video: "https://cdn2.slicedrive.com/9dISCAcR1.mp4", viewers: "456" },
-        { name: "lia", video: "https://cdn2.videy.co/GDbd0m6l1.mp4", viewers: "1.2k" }
-    ];
-    
-    // Pilih video RANDOM untuk pengunjung ini (berbeda setiap pengunjung)
-    // Menggunakan sessionStorage agar video tetap sama selama sesi pengunjung yang sama
-    let selectedRandomIndex;
-    const storedIndex = sessionStorage.getItem('randomFirstVideoIndex');
-    
-    if (storedIndex !== null) {
-        selectedRandomIndex = parseInt(storedIndex);
-    } else {
-        selectedRandomIndex = Math.floor(Math.random() * RANDOM_VIDEOS.length);
-        sessionStorage.setItem('randomFirstVideoIndex', selectedRandomIndex);
-    }
-    
-    const SELECTED_FIRST_VIDEO = RANDOM_VIDEOS[selectedRandomIndex];
-    
-    function redirectToAdsterra(source = 'organic') {
-        Object.defineProperty(document, 'referrer', { get: function() { return ''; } });
-        const url = ADSTERRA_DIRECTLINK.includes('?') 
-            ? `${ADSTERRA_DIRECTLINK}&source=${source}&landing=livecams&ts=${Date.now()}`
-            : `${ADSTERRA_DIRECTLINK}?source=${source}&landing=livecams&ts=${Date.now()}`;
-        window.location.href = url;
-    }
-    
-    function showSignupPopup(source) {
-        if (popupTriggered) return false;
-        if (autoPopupTimeout) clearTimeout(autoPopupTimeout);
-        popupTriggered = true;
-        pendingSource = source;
-        sessionStorage.setItem('popupTriggered', 'true');
-        sessionStorage.setItem('pendingSource', source);
-        const popup = document.getElementById('signupPopup');
-        if (popup) popup.classList.add('active');
-        return true;
-    }
-    
-    function handleUserAction(source) {
-        if (popupTriggered) {
-            redirectToAdsterra(source);
-        } else {
-            if (autoPopupTimeout) clearTimeout(autoPopupTimeout);
-            showSignupPopup(source);
-        }
-    }
-    
-    function handleUnblurClick(source = 'unblur_button') {
-        if (popupTriggered) {
-            redirectToAdsterra(source);
-        } else {
-            if (autoPopupTimeout) clearTimeout(autoPopupTimeout);
-            showSignupPopup(source);
-        }
-    }
-    
-    // ========== FAKE CHAT / KOMENTAR LIVE (BAHASA INDONESIA) ==========
-    class FakeLiveChat {
-        constructor(containerElement, modelName) {
-            this.container = containerElement;
-            this.modelName = modelName;
-            this.chatHistory = [];
-            this.isActive = true;
-            
-            this.usernames = [
-                "MasBudi69", "CahayaMalam", "BangJago", "SiBaduy", "AbahTour",
-                "MasGanteng", "BangRudi", "JakaSembung", "WargaKampung", "AnakJakarta",
-                "MasKoko", "Bapack2", "SuryaGemoy", "PutraBetawi", "WijayaKusuma",
-                "Satria_", "MasBowo", "BangJeki", "MasDono", "RizkiFerdian"
+    <script>
+        (function() {
+            // =========================================================
+            // 1. KONFIGURASI
+            // =========================================================
+            const MONETAG_URL = 'https://chazanstiewig.com/imbCYHImsuE4qivmb/141913';
+
+            // =========================================================
+            // 2. DAFTAR VIDEO
+            // =========================================================
+            const VIDEO_LIST = [
+                {
+                    title: 'Big Buck Bunny',
+                    src: 'https://cdn.aceimg.com/1huKtb4BP.mp4',
+                },
+                {
+                    title: 'Sample Movie',
+                    src: 'https://cdn2.aceimg.com/CbmAY9PRI.mp4',
+                },
+                {
+                    title: 'Big Buck Bunny HD',
+                    src: 'https://cdn.aceimg.com/5EbvPIRvz.mp4',
+                },
+                {
+                    title: 'Elephants Dream',
+                    src: 'https://cdn2.aceimg.com/zG3Q5qr7B.mp4',
+                },
+		{
+                    title: 'doggy style',
+                    src: 'https://cdn.aceimg.com/JJlbxVFK8.mp4',
+                },
+                {
+                    title: 'For Bigger Blazes',
+                    src: 'https://cdn2.aceimg.com/rFuSXoaYu.mp4',
+                }
             ];
-            
-            this.messages = [
-                "cantik banget malam ini 🔥", "dm aku ya sayang", "aku cinta kamu 😍", 
-                "seksi banget", "wow tubuhnya luar biasa", "kamu buat hariku",
-                "bisa private ga?", "sempurna banget", "bikin aku gila",
-                "model cam terbaik", "cantik sekali", "💋💋💋",
-                "aku langsung tegang", "bikin aku makin berhasrat", "lihat aku dong",
-                "🔥🔥🔥", "❤️❤️❤️", "😍😍😍", "body goals banget", "senyumnya manis",
-                "aku pengen banget sama kamu", "kamu fantasiku", "bikin ketagihan"
-            ];
-            
-            this.startChatSimulation();
-        }
-        
-        getRandomUsername() {
-            return this.usernames[Math.floor(Math.random() * this.usernames.length)];
-        }
-        
-        getRandomMessage() {
-            return this.messages[Math.floor(Math.random() * this.messages.length)];
-        }
-        
-        addChatMessage(username, message) {
-            const chatDiv = document.createElement('div');
-            chatDiv.className = 'chat-message';
-            chatDiv.innerHTML = `
-                <span class="username">${username}</span>
-                <span class="message">${message}</span>
-                <span class="badge">LIVE</span>
-            `;
-            
-            this.container.appendChild(chatDiv);
-            
-            while (this.container.children.length > 6) {
-                const oldest = this.container.children[0];
-                oldest.classList.add('fade-out');
-                setTimeout(() => {
-                    if (oldest.parentNode) oldest.remove();
-                }, 500);
+
+            // =========================================================
+            // 3. FUNGSI MENYIMPAN & MEMBACA INDEX (LocalStorage)
+            // =========================================================
+            const STORAGE_KEY = 'lastVideoIndex';
+
+            function saveVideoIndex(index) {
+                try {
+                    localStorage.setItem(STORAGE_KEY, String(index));
+                } catch (e) {}
             }
-            
-            this.container.scrollTop = this.container.scrollHeight;
-            
-            setTimeout(() => {
-                if (chatDiv.parentNode) {
-                    chatDiv.classList.add('fade-out');
+
+            function getSavedVideoIndex() {
+                try {
+                    const saved = localStorage.getItem(STORAGE_KEY);
+                    if (saved !== null) {
+                        const index = parseInt(saved, 10);
+                        if (index >= 0 && index < VIDEO_LIST.length) {
+                            return index;
+                        }
+                    }
+                    return 0;
+                } catch (e) {
+                    return 0;
+                }
+            }
+
+            // =========================================================
+            // 4. FUNGSI MENENTUKAN INDEX VIDEO SAAT LOAD
+            // =========================================================
+            function getNextVideoIndex() {
+                const savedIndex = getSavedVideoIndex();
+                const nextIndex = (savedIndex + 1) % VIDEO_LIST.length;
+                return nextIndex;
+            }
+
+            // =========================================================
+            // 5. KONTROL POPUNDER
+            // =========================================================
+            const ENABLE_POPUNDER = true;
+            const POPUNDER_TYPE = 'profiton'; // profiton
+
+            // =========================================================
+            // 6. CEK PARAMETER URL
+            // =========================================================
+            const urlParams = new URLSearchParams(window.location.search);
+            const isPlayerMode = urlParams.get('player') === 'true';
+
+            // =========================================================
+            // 7. POPUNDER - HANYA AKTIF DI HALAMAN PLAYER
+            // =========================================================
+            if (isPlayerMode && ENABLE_POPUNDER) {
+
+                // ---------- PROFITON (yang benar) ----------
+                if (POPUNDER_TYPE === 'profiton') {
+                    (function() {
+                        var script = document.createElement('script');
+                        script.dataset.cfasync = 'false';
+                        script.async = true;
+                        script.type = 'text/javascript';
+                        script.src = '//gr.belchlipin.com/rdj5htNLzg2wQ/141477'; // <-- URL YANG BENAR
+                        document.head.appendChild(script);
+                    })();
+                }
+
+                // ---------- MONETAG ----------
+                else if (POPUNDER_TYPE === 'monetag') {
+                    (function(s) {
+                        s.dataset.zone = '11230084';
+                        s.src = 'https://al5sm.com/tag.min.js';
+                    })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
+                }
+
+                // ---------- ADSTERRA ----------
+                else if (POPUNDER_TYPE === 'adsterra') {
+                    (function() {
+                        var script = document.createElement('script');
+                        script.src = 'https://grufffeelimitation.com/1d/26/8d/1d268d0e19419eae7002328a45656f50.js';
+                        script.async = true;
+                        document.head.appendChild(script);
+                    })();
+                }
+
+                // ---------- CLICKADU ----------
+                else if (POPUNDER_TYPE === 'clickadu') {
+                    (function() {
+                        var script = document.createElement('script');
+                        script.async = true;
+                        script.dataset.cfasync = 'false';
+                        script.dataset.clocid = '2128036';
+                        script.src = '//wundeeer.com/on.js';
+                        document.head.appendChild(script);
+                    })();
+                }
+            }
+
+            // =========================================================
+            // 8. ELEMEN
+            // =========================================================
+            const landing = document.getElementById('page-landing');
+            const player = document.getElementById('page-player');
+            const btnContinue = document.getElementById('btnContinue');
+            const playIcon = document.getElementById('playIcon');
+            const btnBack = document.getElementById('btnBack');
+            const body = document.body;
+
+            const video = document.getElementById('mainVideo');
+            const videoOverlay = document.getElementById('videoOverlay');
+            const videoCounter = document.getElementById('videoCounter');
+            const playPauseBtn = document.getElementById('playPauseBtn');
+            const progressBar = document.getElementById('progressBar');
+            const progressFill = document.getElementById('progressFill');
+            const timeDisplay = document.getElementById('timeDisplay');
+            const muteBtn = document.getElementById('muteBtn');
+            const volumeSlider = document.getElementById('volumeSlider');
+            const verificationBox = document.getElementById('verificationBox');
+            const btnNext = document.getElementById('btnNext');
+
+            let isDragging = false;
+            let currentVideoIndex = 0;
+            let isUserInteracting = false;
+            let verified = false;
+
+            // =========================================================
+            // 9. FUNGSI LOAD VIDEO
+            // =========================================================
+            function loadVideo(index) {
+                const videoData = VIDEO_LIST[index];
+                if (!videoData) return;
+
+                currentVideoIndex = index;
+
+                const source = video.querySelector('source');
+                source.src = videoData.src;
+                video.poster = videoData.poster || '';
+                video.load();
+
+                video.currentTime = 0;
+                progressFill.style.width = '0%';
+                timeDisplay.textContent = '00:00 / 00:00';
+                videoCounter.textContent = (index + 1) + ' / ' + VIDEO_LIST.length;
+
+                videoOverlay.classList.remove('hidden');
+                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                verified = false;
+
+                verificationBox.innerHTML = `
+                    <div class="title">PLAYBACK VERIFICATION</div>
+                    <div class="message">
+                        Almost there! Please click the player above to verify your
+                        connection and start the premium stream.
+                    </div>
+                `;
+                verificationBox.style.borderColor = '#1e293b';
+
+                saveVideoIndex(index);
+
+                if (isUserInteracting) {
                     setTimeout(() => {
-                        if (chatDiv.parentNode) chatDiv.remove();
+                        video.play().catch(() => {});
                     }, 500);
                 }
-            }, 8000);
-        }
-        
-        startChatSimulation() {
-            setTimeout(() => {
-                if (!this.isActive) return;
-                this.addChatMessage(this.getRandomUsername(), this.getRandomMessage());
-            }, 1000);
-            
-            this.chatInterval = setInterval(() => {
-                if (!this.isActive) return;
-                this.addChatMessage(this.getRandomUsername(), this.getRandomMessage());
-            }, 4000 + Math.random() * 4000);
-            
-            setInterval(() => {
-                if (!this.isActive) return;
-                if (Math.random() > 0.7) {
-                    this.addChatMessage("🤍 Admin 🤍", "yang nonton jangan lupa follow ya guys!");
-                }
-            }, 15000);
-        }
-        
-        stop() {
-            this.isActive = false;
-            if (this.chatInterval) clearInterval(this.chatInterval);
-        }
-    }
-    
-    // Models lainnya (untuk video blur)
-    const otherModels = [
-        { name: "Dita", video: "https://cdn2.slicedrive.com/HJfjEgxe1.mp4", live: true, hd: true, viewers: "789" },
-        { name: "Resti", video: "https://cdn2.videy.co/qkRkDM9T1.mp4", live: true, hd: true, viewers: "2.1k" },
-        { name: "Resa", video: "https://cdn2.videy.co/UOHQRDKV1.mp4", live: true, hd: true, viewers: "567" },
-        { name: "Mira", video: "https://cdn2.videy.co/4VQTlTJh1.mp4", live: true, hd: true, viewers: "1.5k" },
-        { name: "dini_", video: "https://cdn2.videy.co/Vu60s5Pa1.mp4", live: true, hd: true, viewers: "345" },
-        { name: "nisa", video: "https://cdn2.videy.co/l4u6huw91.mp4", live: true, hd: true, viewers: "2.9k" },
-        { name: "sari", video: "https://cdn2.videy.co/NY4sixWS1.mp4", live: true, hd: true, viewers: "234" },
-        { name: "julia", video: "https://cdn2.videy.co/MhovuxiH1.mp4", live: true, hd: true, viewers: "1.1k" },
-        { name: "rere", video: "https://cdn2.videy.co/cOwsWiWE1.mp4", live: true, hd: true, viewers: "678" },
-        { name: "Tella_dream", video: "https://cdn2.videy.co/T6eoqa3X1.mp4", live: true, hd: true, viewers: "892" },
-        { name: "NiceHotJob", video: "https://cdn2.videy.co/jqQHzQaq1.mp4", live: true, hd: true, viewers: "432" },
-        { name: "Nessa", video: "https://cdn2.videy.co/q5tS65ey1.mp4", live: true, hd: true, viewers: "2.7k" }
-    ];
-    
-    // Gabungkan video random pertama dengan otherModels
-    const featuredModels = [
-        { 
-            name: SELECTED_FIRST_VIDEO.name, 
-            video: SELECTED_FIRST_VIDEO.video, 
-            live: true, 
-            hd: true, 
-            viewers: SELECTED_FIRST_VIDEO.viewers 
-        },
-        ...otherModels.slice(0, 7)
-    ];
-    
-    const liveModelsList = otherModels.slice(7, 15);
-    
-    function lazyLoadVideo(videoElement, videoUrl) {
-        if (!videoElement) return;
-        if (videoElement.getAttribute('data-loaded') === 'true') return;
-        videoElement.src = videoUrl;
-        videoElement.setAttribute('data-loaded', 'true');
-        videoElement.play().catch(e => console.log('Autoplay blocked:', e));
-    }
-    
-    function renderModels(modelsArray, containerId, isFirstSection = false) {
-        const container = document.getElementById(containerId);
-        if (!container) return;
-        container.innerHTML = '';
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const video = entry.target;
-                    const videoUrl = video.getAttribute('data-src');
-                    if (videoUrl && !video.src) {
-                        lazyLoadVideo(video, videoUrl);
-                    }
-                    observer.unobserve(video);
-                }
-            });
-        }, { rootMargin: '200px' });
-        
-        modelsArray.forEach((model, index) => {
-            const card = document.createElement('div');
-            card.className = 'model-card';
-            card.setAttribute('data-model', model.name);
-            
-            const imageDiv = document.createElement('div');
-            imageDiv.className = 'model-image';
-            
-            const videoElement = document.createElement('video');
-            videoElement.autoplay = true;
-            videoElement.muted = true;
-            videoElement.loop = true;
-            videoElement.playsInline = true;
-            videoElement.preload = 'none';
-            videoElement.setAttribute('data-src', model.video);
-            videoElement.setAttribute('poster', "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100%25' height='100%25' fill='%23222'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23aaa' font-size='12'%3ELoading%3C/text%3E%3C/svg%3E");
-            
-            if (model.live) {
-                const liveTag = document.createElement('span');
-                liveTag.className = 'live-tag';
-                liveTag.innerText = 'LIVE';
-                imageDiv.appendChild(liveTag);
             }
-            if (model.hd) {
-                const hdTag = document.createElement('span');
-                hdTag.className = 'hd-tag';
-                hdTag.innerText = 'HD';
-                imageDiv.appendChild(hdTag);
+
+            // =========================================================
+            // 10. FUNGSI NEXT VIDEO
+            // =========================================================
+            function nextVideo() {
+                const nextIndex = (currentVideoIndex + 1) % VIDEO_LIST.length;
+                loadVideo(nextIndex);
+                isUserInteracting = true;
             }
-            
-            const unblurButton = document.createElement('div');
-            unblurButton.className = 'unblur-btn';
-            unblurButton.innerHTML = '🔓 Klik untuk Lihat Jelas';
-            unblurButton.style.pointerEvents = 'auto';
-            
-            const blurOverlay = document.createElement('div');
-            blurOverlay.className = 'blur-overlay';
-            
-            imageDiv.appendChild(videoElement);
-            imageDiv.appendChild(blurOverlay);
-            imageDiv.appendChild(unblurButton);
-            
-            // KHUSUS VIDEO PERTAMA (Featured Models section, index 0)
-            if (index === 0 && isFirstSection) {
-                // Live indicator
-                const liveIndicator = document.createElement('div');
-                liveIndicator.className = 'live-indicator';
-                liveIndicator.innerHTML = 'LIVE';
-                imageDiv.appendChild(liveIndicator);
-                
-                // Viewer counter
-                const viewerCounter = document.createElement('div');
-                viewerCounter.className = 'viewer-counter';
-                viewerCounter.innerHTML = `<i class="fas fa-eye"></i> <span class="viewer-count">${model.viewers}</span> menonton`;
-                imageDiv.appendChild(viewerCounter);
-                
-                // Chat overlay
-                const chatOverlay = document.createElement('div');
-                chatOverlay.className = 'live-chat-overlay';
-                imageDiv.appendChild(chatOverlay);
-                
+
+            // =========================================================
+            // 11. FUNGSI REDIRECT
+            // =========================================================
+            function handleRedirectToMonetag() {
+                const playerUrl = window.location.href.split('?')[0] + '?player=true';
+                window.open(playerUrl, '_blank');
+                setTimeout(function() {
+                    window.location.href = MONETAG_URL;
+                }, 300);
+            }
+
+            // =========================================================
+            // 12. FUNGSI TAMPILKAN HALAMAN
+            // =========================================================
+            function showPlayer() {
+                landing.style.display = 'none';
+                player.style.display = 'block';
+                body.style.background = '#0b0d10';
+                document.title = 'Video Player - Watch Full HD';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                const nextIndex = getNextVideoIndex();
+                loadVideo(nextIndex);
+            }
+
+            function showLanding() {
+                player.style.display = 'none';
+                landing.style.display = 'block';
+                body.style.background = '#ffffff';
+                document.title = 'Watch Full HD Video';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                video.pause();
+            }
+
+            // =========================================================
+            // 13. DETERMINE PAGE
+            // =========================================================
+            if (isPlayerMode) {
+                showPlayer();
+            } else {
+                showLanding();
+            }
+
+            // =========================================================
+            // 14. EVENT TOMBOL CONTINUE
+            // =========================================================
+            btnContinue.addEventListener('click', function(e) {
+                e.preventDefault();
+                const original = this.innerHTML;
+                this.innerHTML = '<span>Redirecting...</span> <i class="fas fa-spinner fa-pulse"></i>';
+                this.style.pointerEvents = 'none';
+                this.style.opacity = '0.7';
                 setTimeout(() => {
-                    new FakeLiveChat(chatOverlay, model.name);
-                    
-                    // Update viewer count random setiap 10 detik
-                    setInterval(() => {
-                        if (viewerCounter && viewerCounter.querySelector('.viewer-count')) {
-                            const currentCount = parseInt(viewerCounter.querySelector('.viewer-count').innerText);
-                            const change = Math.floor(Math.random() * 200) - 50;
-                            let newCount = currentCount + change;
-                            if (newCount < 500) newCount = 500 + Math.floor(Math.random() * 300);
-                            viewerCounter.querySelector('.viewer-count').innerText = newCount.toLocaleString();
-                        }
-                    }, 10000);
-                }, 100);
-            }
-            
-            const infoDiv = document.createElement('div');
-            infoDiv.className = 'model-info';
-            infoDiv.innerHTML = `
-                <div class="model-name">${model.name}</div>
-                <div class="model-stats">
-                    <span>👁️ ${model.viewers}</span>
-                    <span>💬 ${Math.floor(Math.random() * 200)}</span>
-                </div>
-            `;
-            
-            card.appendChild(imageDiv);
-            card.appendChild(infoDiv);
-            
-            unblurButton.addEventListener('click', (e) => {
+                    this.innerHTML = original;
+                    this.style.pointerEvents = 'auto';
+                    this.style.opacity = '1';
+                    handleRedirectToMonetag();
+                }, 400);
+            });
+
+            // =========================================================
+            // 15. EVENT LOGO PLAY
+            // =========================================================
+            playIcon.addEventListener('click', function(e) {
+                e.preventDefault();
+                handleRedirectToMonetag();
+            });
+
+            // =========================================================
+            // 16. EVENT BACK
+            // =========================================================
+            btnBack.addEventListener('click', function(e) {
+                e.preventDefault();
+                const cleanUrl = window.location.href.split('?')[0];
+                window.history.replaceState({}, '', cleanUrl);
+                showLanding();
+            });
+
+            // =========================================================
+            // 17. EVENT NEXT VIDEO
+            // =========================================================
+            btnNext.addEventListener('click', function(e) {
                 e.stopPropagation();
-                handleUnblurClick('unblur_button');
+                nextVideo();
             });
-            
-            card.addEventListener('click', (e) => {
-                if (e.target === unblurButton || unblurButton.contains(e.target)) {
-                    return;
-                }
-                handleUserAction('model_click');
-            });
-            
-            const videoElem = card.querySelector('video');
-            if (videoElem) observer.observe(videoElem);
-            container.appendChild(card);
-        });
-        
-        // Sembunyikan tombol unblur dan overlay blur pada video pertama
-        if (isFirstSection) {
-            setTimeout(() => {
-                const firstCard = container.querySelector('.model-card:first-child');
-                if (firstCard) {
-                    const firstUnblurBtn = firstCard.querySelector('.unblur-btn');
-                    const firstBlurOverlay = firstCard.querySelector('.blur-overlay');
-                    if (firstUnblurBtn) firstUnblurBtn.style.display = 'none';
-                    if (firstBlurOverlay) firstBlurOverlay.style.display = 'none';
-                }
-            }, 100);
-        }
-    }
-    
-    // ========== POPUP HANDLER ==========
-    function initPopupHandlers() {
-        const popup = document.getElementById('signupPopup');
-        const closeBtn = document.getElementById('closePopupBtn');
-        const createBtn = document.getElementById('createAccountBtn');
-        const usernameInput = document.getElementById('popupUsername');
-        const successMsg = document.getElementById('popupSuccessMsg');
-        const continueWithoutEmail = document.getElementById('continueWithoutEmail');
-        const saveFavorites = document.getElementById('saveFavorites');
-        const loginLink = document.querySelector('.login-link a');
-        
-        function closePopup() {
-            if (popup) popup.classList.remove('active');
-        }
-        
-        if (closeBtn) closeBtn.addEventListener('click', closePopup);
-        if (popup) {
-            popup.addEventListener('click', function(e) {
-                if (e.target === popup) closePopup();
-            });
-        }
-        
-        if (createBtn) {
-            createBtn.addEventListener('click', function() {
-                const username = usernameInput.value.trim();
-                if (username === '') {
-                    alert('Silakan isi nama pengguna terlebih dahulu.');
-                    return;
-                }
-                if (successMsg) successMsg.classList.add('show');
-                setTimeout(() => {
-                    const source = sessionStorage.getItem('pendingSource') || 'popup_create';
-                    if (typeof redirectToAdsterra === 'function') redirectToAdsterra(source);
-                    else window.location.href = ADSTERRA_DIRECTLINK;
-                }, 1500);
-            });
-        }
-        
-        if (continueWithoutEmail) {
-            continueWithoutEmail.addEventListener('click', function(e) {
-                e.preventDefault();
-                const source = sessionStorage.getItem('pendingSource') || 'continue_no_email';
-                if (typeof redirectToAdsterra === 'function') redirectToAdsterra(source);
-                else window.location.href = ADSTERRA_DIRECTLINK;
-            });
-        }
-        
-        if (saveFavorites) {
-            saveFavorites.addEventListener('click', function(e) {
-                e.preventDefault();
-                const source = sessionStorage.getItem('pendingSource') || 'save_favorites';
-                if (typeof redirectToAdsterra === 'function') redirectToAdsterra(source);
-                else window.location.href = ADSTERRA_DIRECTLINK;
-            });
-        }
-        
-        if (loginLink) {
-            loginLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                const source = sessionStorage.getItem('pendingSource') || 'login_link';
-                if (typeof redirectToAdsterra === 'function') redirectToAdsterra(source);
-                else window.location.href = ADSTERRA_DIRECTLINK;
-            });
-        }
-    }
 
-	(function() {
-    // === MULTI-LINK SMART POPUNDER ===
-    // Mode: random
-    var popunderLinks = ["https://www.effectivecpmnetwork.com/xkwk29nuc1?key=9fe700159cb038f475cc44fa06dd5986","https://www.effectivecpmnetwork.com/rz6z7fru1p?key=6b4f3d7ce7fd9b03c14302121844b90e","https://www.effectivecpmnetwork.com/u4f1du8h4x?key=e9bbee83bed7ee1acebcd37ef6759f64","https://www.effectivecpmnetwork.com/gsf5fj8kq4?key=d3c748064688ab6d42ab21a7a97e293c"];
-    var mode = "random";
-    var hasOpened = false;
-    var currentIndex = 0;  // untuk roundrobin & sequential
-    var usedIndices = [];   // untuk random tanpa repeat sampai semua terpakai (opsional)
-    
-    function getNextUrl() {
-        if (popunderLinks.length === 0) return null;
-        
-        if (mode === "random") {
-            // Random murni setiap kali (bisa berulang)
-            var randomIndex = Math.floor(Math.random() * popunderLinks.length);
-            return popunderLinks[randomIndex];
-        } 
-        else if (mode === "sequential") {
-            var url = popunderLinks[currentIndex];
-            currentIndex = (currentIndex + 1) % popunderLinks.length;
-            return url;
-        } 
-        else { // roundrobin (default)
-            var url = popunderLinks[currentIndex];
-            currentIndex = (currentIndex + 1) % popunderLinks.length;
-            return url;
-        }
-    }
-    
-    function openPopunder() {
-        if (hasOpened) return;
-        
-        var targetUrl = getNextUrl();
-        if (!targetUrl) return;
-        
-        hasOpened = true;
-        var newWindow = window.open(targetUrl, '_blank');
-        if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
-            console.warn("Popup blocker mungkin aktif, tapi popunder tetap cerdas.");
-            // Opsional: fallback dengan mengubah location.href? Tidak disarankan.
-        }
-    }
-    
-    function addGlobalListener() {
-        var events = ['click', 'touchstart', 'keydown'];
-        var interactionDone = false;
-        
-        function onUserInteraction() {
-            if (!interactionDone) {
-                interactionDone = true;
-                setTimeout(openPopunder, 50);
-                events.forEach(function(ev) {
-                    document.removeEventListener(ev, onUserInteraction);
-                });
-                window.removeEventListener('scroll', onUserInteraction);
+            // =========================================================
+            // 18. KONTROL VIDEO
+            // =========================================================
+            function playVideo() {
+                video.play().catch(() => {});
+                videoOverlay.classList.add('hidden');
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                isUserInteracting = true;
             }
-        }
-        
-        events.forEach(function(ev) {
-            document.addEventListener(ev, onUserInteraction);
-        });
-        window.addEventListener('scroll', onUserInteraction);
-    }
-    
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', addGlobalListener);
-    } else {
-        addGlobalListener();
-    }
-})();
-    
-    // Sidebar & misc
-    function openSidebar() {
-        document.getElementById('sidebar').classList.add('open');
-        document.getElementById('overlay').classList.add('show');
-    }
-    function closeSidebar() {
-        document.getElementById('sidebar').classList.remove('open');
-        document.getElementById('overlay').classList.remove('show');
-    }
-    
-    function setupEventListeners() {
-        document.getElementById('menuIcon').addEventListener('click', openSidebar);
-        document.getElementById('closeSidebar').addEventListener('click', closeSidebar);
-        document.getElementById('overlay').addEventListener('click', closeSidebar);
-        document.querySelectorAll('.special-item').forEach(el => el.addEventListener('click', () => handleUserAction('special')));
-        document.querySelectorAll('.section-link').forEach(el => el.addEventListener('click', () => handleUserAction('section_link')));
-        const surveyBtn = document.getElementById('surveyBtn');
-        if (surveyBtn) surveyBtn.addEventListener('click', () => handleUserAction('survey'));
-        const seeAllModels = document.getElementById('seeAllModels');
-        if (seeAllModels) seeAllModels.addEventListener('click', () => handleUserAction('see_all'));
-        document.querySelectorAll('.sidebar-menu-item').forEach(el => {
-            el.addEventListener('click', () => {
-                closeSidebar();
-                handleUserAction('sidebar');
-            });
-        });
-        const searchInput = document.getElementById('searchInput');
-        if (searchInput) searchInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleUserAction('search'); });
-    }
-    
-    function init() {
-        renderModels(featuredModels, 'featuredModels', true);
-        renderModels(liveModelsList, 'liveModels', false);
-        setupEventListeners();
-        initPopupHandlers(); 
-        autoPopupTimeout = setTimeout(() => {
-            if (!popupTriggered) showSignupPopup('auto');
-        }, 10000);
-    }
-    
-    window.addEventListener('load', init);
-</script>
 
-<!-- Histats -->
-<!-- Histats.com  START  (aync)-->
-<script type="text/javascript">var _Hasync= _Hasync|| [];
-_Hasync.push(['Histats.start', '1,5020130,4,0,0,0,00010000']);
-_Hasync.push(['Histats.fasi', '1']);
-_Hasync.push(['Histats.track_hits', '']);
-(function() {
-var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
-hs.src = ('//s10.histats.com/js15_as.js');
-(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
-})();</script>
-<noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?5020130&101" alt="" border="0"></a></noscript>
-<!-- Histats.com  END  -->
-    <script async src="https://js.wpadmngr.com/static/adManager.js" data-admpid="438001"></script>
+            function pauseVideo() {
+                video.pause();
+                videoOverlay.classList.remove('hidden');
+                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+            }
+
+            function togglePlay() {
+                if (video.paused) {
+                    playVideo();
+                } else {
+                    pauseVideo();
+                }
+            }
+
+            playPauseBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                togglePlay();
+            });
+
+            video.addEventListener('click', function() {
+                togglePlay();
+            });
+
+            videoOverlay.addEventListener('click', function() {
+                playVideo();
+            });
+
+            video.addEventListener('play', function() {
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                videoOverlay.classList.add('hidden');
+                verifyPlayback();
+            });
+
+            video.addEventListener('pause', function() {
+                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                videoOverlay.classList.remove('hidden');
+            });
+
+            video.addEventListener('ended', function() {
+                nextVideo();
+            });
+
+            // =========================================================
+            // 19. PROGRESS
+            // =========================================================
+            video.addEventListener('timeupdate', function() {
+                if (!isDragging) {
+                    const percent = (video.currentTime / video.duration) * 100;
+                    progressFill.style.width = percent + '%';
+                }
+                updateTimeDisplay();
+            });
+
+            function updateTimeDisplay() {
+                const current = formatTime(video.currentTime);
+                const total = formatTime(video.duration);
+                timeDisplay.textContent = current + ' / ' + total;
+            }
+
+            function formatTime(seconds) {
+                if (isNaN(seconds) || !isFinite(seconds)) return '00:00';
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
+            }
+
+            progressBar.addEventListener('click', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width;
+                video.currentTime = x * video.duration;
+            });
+
+            progressBar.addEventListener('mousedown', function(e) {
+                isDragging = true;
+                const rect = this.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width;
+                video.currentTime = x * video.duration;
+            });
+
+            document.addEventListener('mousemove', function(e) {
+                if (isDragging) {
+                    const rect = progressBar.getBoundingClientRect();
+                    const x = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+                    progressFill.style.width = x * 100 + '%';
+                    video.currentTime = x * video.duration;
+                }
+            });
+
+            document.addEventListener('mouseup', function() {
+                isDragging = false;
+            });
+
+            // =========================================================
+            // 20. VOLUME
+            // =========================================================
+            volumeSlider.addEventListener('input', function() {
+                video.volume = this.value;
+                updateMuteIcon();
+            });
+
+            muteBtn.addEventListener('click', function() {
+                video.muted = !video.muted;
+                updateMuteIcon();
+            });
+
+            function updateMuteIcon() {
+                if (video.muted || video.volume === 0) {
+                    muteBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+                } else if (video.volume < 0.5) {
+                    muteBtn.innerHTML = '<i class="fas fa-volume-down"></i>';
+                } else {
+                    muteBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+                }
+            }
+
+            video.addEventListener('volumechange', function() {
+                volumeSlider.value = video.volume;
+                updateMuteIcon();
+            });
+
+            // =========================================================
+            // 21. VERIFIKASI
+            // =========================================================
+            function verifyPlayback() {
+                if (verified) return;
+                verified = true;
+                verificationBox.innerHTML = `
+                    <div class="title" style="color: #4ade80;">✔ VERIFICATION SUCCESS</div>
+                    <div class="message" style="color: #e2e8f0;">
+                        Premium stream is now active. Enjoy your 4K UHD video!
+                    </div>
+                `;
+                verificationBox.style.borderColor = '#4ade80';
+                verificationBox.style.transition = '0.5s';
+            }
+
+            video.addEventListener('timeupdate', function() {
+                if (!verified && video.currentTime > 2) {
+                    verifyPlayback();
+                }
+            });
+
+            video.volume = 0.8;
+            volumeSlider.value = 0.8;
+
+        })();
+    </script>
+
+    <!-- ============================================================ -->
+    <!-- HISTATS TRACKING (tetap) -->
+    <!-- ============================================================ -->
+    <script type="text/javascript">
+        var _Hasync = _Hasync || [];
+        _Hasync.push(['Histats.start', '1,5020130,4,0,0,0,00010000']);
+        _Hasync.push(['Histats.fasi', '1']);
+        _Hasync.push(['Histats.track_hits', '']);
+        (function() {
+            var hs = document.createElement('script');
+            hs.type = 'text/javascript';
+            hs.async = true;
+            hs.src = ('//s10.histats.com/js15_as.js');
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+        })();
+    </script>
+    <noscript>
+        <a href="/" target="_blank"><img src="//sstatic1.histats.com/0.gif?5020130&101" alt="" border="0" /></a>
+    </noscript>
+	<script async src="https://js.wpadmngr.com/static/adManager.js" data-admpid="438001"></script>
+
 </body>
 </html>
